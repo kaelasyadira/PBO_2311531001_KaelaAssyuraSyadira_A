@@ -8,6 +8,7 @@ import javax.swing.JScrollPane;
 import javax.swing.border.EmptyBorder;
 
 import DAO.UserRepo;
+import model.Customer;
 import model.User;
 import table.TableUser;
 
@@ -34,7 +35,6 @@ public class UserFrame extends JFrame {
 	private JTextField txtName;
 	private JTextField txtUsername;
 	private JTextField txtPassword;
-	private JTable tableUsers;
 
 	/**
 	 * Launch the application.
@@ -43,6 +43,7 @@ public class UserFrame extends JFrame {
 	UserRepo usr = new UserRepo();
 	List<User> ls;
 	String id;
+	private JTable tableUsers;
 	
 	public void reset() {
 		txtName.setText("");
@@ -179,20 +180,13 @@ public class UserFrame extends JFrame {
 		btnDelete.setBounds(190, 157, 80, 23);
 		panel.add(btnDelete);
 		
-		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(10, 200, 391, 267);
-		scrollPane.setViewportView(tableUsers);
-		scrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
-		scrollPane.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
-		contentPane.add(scrollPane);
+		JPanel panel_1 = new JPanel();
+		panel_1.setBounds(10, 213, 391, 254);
+		contentPane.add(panel_1);
+		panel_1.setLayout(null);
 		
-		tableUsers = new JTable();
-		tableUsers.setToolTipText("");
-		tableUsers.setFillsViewportHeight(true);
-		tableUsers.setBackground(new Color(255, 255, 255));
-		tableUsers.setBounds(10, 200, 416, 232);
-		scrollPane.setRowHeaderView(tableUsers);
-		tableUsers.addMouseListener(new MouseAdapter() {
+		JScrollPane scrollPane = new JScrollPane();
+		scrollPane.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				id = tableUsers.getValueAt(tableUsers.getSelectedRow(),0).toString();
@@ -200,7 +194,12 @@ public class UserFrame extends JFrame {
 				txtUsername.setText(tableUsers.getValueAt(tableUsers.getSelectedRow(),2).toString());
 				txtPassword.setText(tableUsers.getValueAt(tableUsers.getSelectedRow(),3).toString());
 			}
+			
 		});
-		tableUsers.setFont(new Font("SansSerif", Font.PLAIN, 12));
+		scrollPane.setBounds(10, 11, 371, 232);
+		panel_1.add(scrollPane);
+		
+		tableUsers = new JTable();
+		scrollPane.setViewportView(tableUsers);
 	}
 }

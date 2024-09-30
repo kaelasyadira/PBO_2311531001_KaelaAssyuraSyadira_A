@@ -1,6 +1,5 @@
 package DAO;
 
-import java.util.logging.*;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -8,35 +7,32 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.swing.table.AbstractTableModel;
+
 import confg.Database;
-import model.User;
-import DAO.UserDao;
-import java.util.*;
+import model.Customer;
+import model.Service;
 
-
-
-
-public class UserRepo implements UserDao {
+public class ServiceRepo implements ServiceDao {
 	private Connection connection;
-	final String insert = "INSERT INTO user (name, username, password) VALUES (?, ?, ?);";
-	final String select = "SELECT * FROM user;" ;
-	final String delete = "DELETE FROM user WHERE id?;";
-	final String update = "UPDATE user SET name=?, username=?, password=? WHERE id = ?;";
+	final String insert = "INSERT INTO service (jenis, harga, status) VALUES (?, ?, ?);";
+	final String select = "SELECT * FROM service;" ;
+	final String delete = "DELETE FROM service WHERE id=?;";
+	final String update = "UPDATE service SET jenis=?, harga=?,  status=? WHERE id = ?;";
 	
-	public UserRepo () {
+	public ServiceRepo () {
 		connection = Database.koneksi();
 	}
 
 	@Override
-	public void save(User user) {
+	public void save(Service service) {
 		PreparedStatement st = null;
 		try {
 			st = connection.prepareStatement(insert);
-			st.setString(1, user.getNama());
-			st.setString(2, user.getUsername());
-			st.setString(3, user.getPassword());
+			st.setString(1, service.getJenis());
+			st.setString(2, service.getHarga());
+			st.setString(3, service.getStatus());
 			st.executeUpdate();
 		}
 		
@@ -48,28 +44,28 @@ public class UserRepo implements UserDao {
 				st.close();
 			} catch(SQLException e) {
 				e.printStackTrace();
-			}
-		}
+			}		}
+		
 	}
 
 	@Override
-	public List<User> show() {
-		List<User>ls = null;
+	public List<Service> show() {
+		List<Service>ls = null;
 		try {
-			ls = new ArrayList<User>();
+			ls = new ArrayList<Service>();
 			Statement  st = connection.createStatement();
 			ResultSet rs = st.executeQuery(select);
 			while(rs.next()) {
-				User user = new User();
-				user.setId(rs.getString("id"));
-				user.setNama(rs.getString("name"));
-				user.setUsername(rs.getString("username"));
-				user.setPassword(rs.getString("password"));
-				ls.add(user);
+				Service service = new Service();
+				service.setId(rs.getString("id"));
+				service.setJenis(rs.getString("jenis"));
+				service.setHarga(rs.getString("harga"));
+				service.setStatus(rs.getString("status"));
+				ls.add(service);
 			}
 		} 
 		catch(SQLException e) {
-			Logger.getLogger(UserDao.class.getName()).log(Level.SEVERE,null,e);
+			Logger.getLogger(CustomerDao.class.getName()).log(Level.SEVERE, null, e);
 		}
 		return ls;
 	}
@@ -93,19 +89,18 @@ public class UserRepo implements UserDao {
 			e.printStackTrace();
 			}
 		}
-	
 		
 	}
 
 	@Override
-	public void update(User user) {
+	public void update(Service service) {
 		PreparedStatement st = null;
 		try {
 			st = connection.prepareStatement(update);
-			st.setString(1, user.getNama());
-			st.setString(2, user.getUsername());
-			st.setString(3, user.getPassword());
-			st.setString(4, user.getId());
+			st.setString(1, service.getJenis());
+			st.setString(2, service.getHarga());
+			st.setString(3, service.getStatus());
+			st.setString(4, service.getId());
 			st.executeUpdate();
 		}
 		catch(SQLException e){
@@ -121,6 +116,8 @@ public class UserRepo implements UserDao {
 			}
 		}
 		
+		
+	
 		
 	}
 
