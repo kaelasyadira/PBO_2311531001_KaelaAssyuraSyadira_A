@@ -184,7 +184,12 @@ public class ServiceFrame extends JFrame {
 		panel_1.setBounds(10, 187, 366, 146);
 		contentPane.add(panel_1);
 		
+		JScrollPane scrollPane_1 = new JScrollPane();
+		scrollPane_1.setBounds(10, 11, 346, 124);
+		panel_1.add(scrollPane_1);
+		
 		JScrollPane scrollPane = new JScrollPane();
+		scrollPane_1.setViewportView(scrollPane);
 		scrollPane.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -195,8 +200,6 @@ public class ServiceFrame extends JFrame {
 				
 			}
 		});
-		scrollPane.setBounds(10, 11, 346, 124);
-		panel_1.add(scrollPane);
 		
 		tableServices = new JTable();
 		scrollPane.setViewportView(tableServices);
