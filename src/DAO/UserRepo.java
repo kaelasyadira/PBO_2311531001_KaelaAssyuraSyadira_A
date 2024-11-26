@@ -60,7 +60,7 @@ public class UserRepo implements UserDao {
 			Statement  st = connection.createStatement();
 			ResultSet rs = st.executeQuery(select);
 			while(rs.next()) {
-				User user = new User();
+				User user = new User("", "");
 				user.setId(rs.getString("id"));
 				user.setNama(rs.getString("name"));
 				user.setUsername(rs.getString("username"));

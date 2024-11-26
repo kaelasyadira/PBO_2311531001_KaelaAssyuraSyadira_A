@@ -2,6 +2,12 @@ package model;
 
 public class User {
 	String id, nama, username, password;
+	
+	public User(String uname, String pass) {
+		this.username = uname;
+		this.password = pass;
+		
+	}
 
 	public String getId() {
 		return id;
@@ -37,17 +43,17 @@ public class User {
 	
 	public static boolean loggin(String username, String password) {
 		boolean isLoggin = false;
-		User user = new User();
-		user.setId("1");
-		user.setNama("Kaela");
-		user.setUsername("Kaela");
-		user.setPassword("12345");
+		//User user = new User();
+		//user.setId("1");
+		//user.setNama("Kaela");
+		//user.setUsername("Kaela");
+		//user.setPassword("12345");
 		
-		if(user.getUsername().equalsIgnoreCase(username.trim()) && user.getPassword().equalsIgnoreCase(password)) {
-			isLoggin = true;
-		}else {	
-			isLoggin = false;
-		}
+	//	if(user.getUsername().equalsIgnoreCase(username.trim()) && user.getPassword().equalsIgnoreCase(password)) {
+		//	isLoggin = true;
+		//}else {	
+		//	isLoggin = false;
+		//}
 			return isLoggin;
 		}
 	}
