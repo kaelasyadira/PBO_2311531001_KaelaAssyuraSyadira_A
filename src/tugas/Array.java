@@ -7,6 +7,7 @@ import javax.swing.border.EmptyBorder;
 import java.awt.event.*;
 import java.awt.Font;
 import java.util.ArrayList;
+import java.awt.Color;
 
 public class Array extends JFrame {
 
@@ -39,8 +40,9 @@ public class Array extends JFrame {
         dataList = new ArrayList<>();
 
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setBounds(100, 100, 605, 340);
+        setBounds(100, 100, 463, 320);
         contentPane = new JPanel();
+        contentPane.setBackground(new Color(153, 204, 204));
         contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
         setContentPane(contentPane);
@@ -52,11 +54,12 @@ public class Array extends JFrame {
         contentPane.add(lblData);
 
         inputField = new JTextField();
-        inputField.setBounds(10, 84, 391, 38);
+        inputField.setBounds(10, 84, 312, 26);
         contentPane.add(inputField);
         inputField.setColumns(10);
 
         JButton btnSimpan = new JButton("Simpan");
+        btnSimpan.setBackground(new Color(89, 172, 172));
         btnSimpan.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 try {
@@ -73,7 +76,7 @@ public class Array extends JFrame {
                 }
             }
         });
-        btnSimpan.setBounds(411, 84, 167, 38);
+        btnSimpan.setBounds(342, 78, 95, 37);
         contentPane.add(btnSimpan);
 
         JLabel lblData_2 = new JLabel("Data :");
@@ -82,7 +85,7 @@ public class Array extends JFrame {
         contentPane.add(lblData_2);
 
         dataArea = new JTextArea();
-        dataArea.setBounds(60, 150, 518, 20);
+        dataArea.setBounds(55, 151, 267, 20);
         dataArea.setEditable(false);
         contentPane.add(dataArea);
 
@@ -92,11 +95,12 @@ public class Array extends JFrame {
         contentPane.add(lbkCheckArray);
 
         checkField = new JTextField();
-        checkField.setBounds(138, 179, 263, 38);
+        checkField.setBounds(119, 193, 167, 26);
         contentPane.add(checkField);
         checkField.setColumns(10);
 
         JButton btnCheck = new JButton("Check");
+        btnCheck.setBackground(new Color(89, 172, 172));
         btnCheck.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 try {
@@ -113,22 +117,22 @@ public class Array extends JFrame {
             }
         });
 
-        btnCheck.setBounds(411, 179, 167, 38);
+        btnCheck.setBounds(342, 188, 95, 37);
         contentPane.add(btnCheck);
 
         JLabel lblJudul = new JLabel("CHECK ARRAY");
-        lblJudul.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 18));
-        lblJudul.setBounds(214, 0, 149, 48);
+        lblJudul.setFont(new Font("Algerian", Font.BOLD | Font.ITALIC, 18));
+        lblJudul.setBounds(154, 0, 149, 48);
         contentPane.add(lblJudul);
         
         JLabel lblHasil = new JLabel("Hasil : ");
         lblHasil.setFont(new Font("Tahoma", Font.PLAIN, 18));
-        lblHasil.setBounds(10, 249, 66, 37);
+        lblHasil.setBounds(10, 228, 66, 37);
         contentPane.add(lblHasil);
         
         textField = new JTextField();
         textField.setColumns(10);
-        textField.setBounds(73, 248, 328, 38);
+        textField.setBounds(66, 239, 256, 20);
         contentPane.add(textField);
     }
 

@@ -90,7 +90,7 @@ public class LoginFrame extends JFrame {
 					ValidationUtil.validate(user);
 					LoginService loginService = new LoginService();
 					if(loginService.authenticate(user)) {
-						System.out.println("Login Successful!");
+						System.out.println("Logsin Successful!");
 						new MainFrame().setVisible(true);
 						dispose();
 					}
