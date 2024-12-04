@@ -11,6 +11,7 @@ import java.awt.Font;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import tugas.Array;
 
 public class MainFrame extends JFrame {
 
@@ -39,7 +40,7 @@ public class MainFrame extends JFrame {
 	 */
 	public MainFrame() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 311, 337);
+		setBounds(100, 100, 311, 398);
 		contentPane = new JPanel();
 		contentPane.setBackground(new Color(121, 211, 255));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -53,12 +54,28 @@ public class MainFrame extends JFrame {
 		contentPane.add(lblNewLabel);
 		
 		JButton btnPelanggan = new JButton("Pelanggan");
+		btnPelanggan.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				CustomerFrame cts = new CustomerFrame();
+				cts.setVisible(true);
+				dispose();
+
+			}
+		});
 		btnPelanggan.setFont(new Font("Tahoma", Font.PLAIN, 10));
 		btnPelanggan.setBackground(new Color(255, 181, 106));
 		btnPelanggan.setBounds(43, 175, 89, 50);
 		contentPane.add(btnPelanggan);
 		
 		JButton btnLayanan = new JButton("Layanan");
+		btnLayanan.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				ServiceFrame service = new ServiceFrame();
+				service.setVisible(true);
+				dispose();
+
+			}
+		});
 		btnLayanan.setBackground(new Color(138, 255, 138));
 		btnLayanan.setBounds(43, 114, 89, 50);
 		contentPane.add(btnLayanan);
@@ -67,12 +84,24 @@ public class MainFrame extends JFrame {
 		btnPesanan.setBackground(new Color(255, 255, 147));
 		btnPesanan.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				OrderDetailFrame odf = new OrderDetailFrame();
+				odf.setVisible(true);
+				dispose();
+
 			}
 		});
 		btnPesanan.setBounds(43, 53, 89, 50);
 		contentPane.add(btnPesanan);
 		
 		JButton btnPengguna = new JButton("Pengguna");
+		btnPengguna.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				UserFrame user = new UserFrame();
+				user.setVisible(true);
+				dispose();
+
+			}
+		});
 		btnPengguna.setBackground(new Color(255, 74, 255));
 		btnPengguna.setBounds(164, 53, 89, 50);
 		contentPane.add(btnPengguna);
@@ -92,7 +121,29 @@ public class MainFrame extends JFrame {
 		contentPane.add(btnHome);
 		
 		JButton btnNewButton = new JButton("KELUAR");
-		btnNewButton.setBounds(102, 252, 89, 23);
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				LoginFrame login = new LoginFrame ();
+				login.setVisible(true);
+				dispose();
+
+			}
+		});
+		btnNewButton.setBounds(43, 325, 210, 23);
 		contentPane.add(btnNewButton);
+		
+		JButton btnTugas = new JButton("Tugas");
+		btnTugas.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Array arrayframe = new Array();
+				arrayframe.setVisible(true);
+				dispose();
+
+				
+			}
+		});
+		btnTugas.setBackground(new Color(166, 166, 166));
+		btnTugas.setBounds(99, 250, 89, 50);
+		contentPane.add(btnTugas);
 	}
 }
