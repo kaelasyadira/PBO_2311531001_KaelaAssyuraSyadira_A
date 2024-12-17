@@ -9,6 +9,7 @@ import javax.swing.border.EmptyBorder;
 import DAO.CustomerRepo;
 import DAO.UserRepo;
 import model.Customer;
+import model.CustomerBuilder;
 import model.User;
 import table.TableCustomer;
 import table.TableUser;
@@ -126,10 +127,11 @@ public class CustomerFrame extends JFrame {
 		JButton btnNewButton = new JButton("SAVE");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Customer customer = new Customer();
-				customer.setName(txtNama.getText());
-				customer.setAddress(txtAddress.getText());
-				customer.setHp(txtHp.getText());
+				Customer customer = new CustomerBuilder()
+				.setName(txtNama.getText())
+				.setAddress(txtAddress.getText())
+				.setHp(txtHp.getText())
+				.build();
 				csmtr.save(customer);
 				reset();
 				loadTable();
@@ -142,14 +144,14 @@ public class CustomerFrame extends JFrame {
 		JButton btnUpdate = new JButton("UPDATE");
 		btnUpdate.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Customer customer = new Customer();
-				customer.setName(txtNama.getText());
-				customer.setAddress(txtAddress.getText());
-				customer.setHp(txtHp.getText());
-				customer.setId(id);
-				csmtr.update(customer);
-				reset();
-				loadTable();
+			    Customer customer = new CustomerBuilder()
+			            .setName(txtNama.getText())
+			            .setAddress(txtAddress.getText())
+			            .setHp(txtHp.getText())
+			            .build();
+			    csmtr.save(customer);
+			    reset();
+			    loadTable();
 			}
 		});
 		btnUpdate.setFont(new Font("Calibri", Font.PLAIN, 13));
